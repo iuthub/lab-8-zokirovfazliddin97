@@ -1,5 +1,12 @@
 # Labs 7 and 8
 
+# Student Details
+
+- Student ID: `your id`
+- Student Name: `your name`
+- Section Number: `you section number`
+
+# Tasks
 Finish following tasks in this project:
 
 - [ ] Create `Post` model and list its instances in corresponding templates: `\resources\views\blog\index.blade.php` and `\resources\views\admin\index.blade.php`
