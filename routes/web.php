@@ -21,6 +21,11 @@ Route::get('post/{id}', [
     'as' => 'blog.post'
 ]);
 
+Route::get("post/like/{id}", [
+    'uses'=>"PostController@postLike",
+    'as'=>"blog.like"
+]);
+
 Route::get('about', function () {
     return view('other.about');
 })->name('other.about');
@@ -50,4 +55,35 @@ Route::group(['prefix' => 'admin'], function() {
         'uses' => 'PostController@postAdminUpdate',
         'as' => 'admin.update'
     ]);
+
+    Route::get('delete/{id}', [
+        'uses'=>'PostController@postAdminDelete', 
+        'as'=>'admin.delete'
+    ]);
+
+    Route::get('tag/create', [
+        'uses'=>'PostController@tagGetAdminCreate',
+        'as'=>'admin.tag.create'
+    ]);
+
+    Route::post("tag/store", [
+        'uses'=>"PostController@tagPostAdminCreate",
+        'as'=>'admin.tag.store'
+    ]);
+
+    Route::get('tag/edit/{id}', [
+        'uses'=>"PostController@tagAdminEdit", 
+        'as'=>"admin.tag.edit"
+    ]);
+
+    Route::post("tag/update/{id}", [
+        'uses'=>"PostController@tagAdminUpdate",
+        'as'=>'admin.tag.update'
+    ]);
+
+    Route::get("tag/delete/{id}", [
+        'uses'=>"PostController@tagAdminDelete",
+        'as'=>"admin.tag.delete"
+    ]);
+
 });

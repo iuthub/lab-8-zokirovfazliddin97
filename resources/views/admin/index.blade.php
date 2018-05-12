@@ -9,16 +9,37 @@
         </div>
     @endif
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4">
             <a href="{{ route('admin.create') }}" class="btn btn-success">New Post</a>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ route('admin.tag.create') }}" class="btn btn-info">New Tag</a>
         </div>
     </div>
     <hr>
-    @foreach($posts as $post)
-    <div class="row">
-        <div class="col-md-12">
-            <p><strong>{{ $post['title'] }}</strong> <a href="{{ route('admin.edit', ['id' => array_search($post, $posts)]) }}">Edit</a></p>
-        </div>
+    <div class="col-md-4">
+        @foreach($posts as $post)
+            <div class="row">
+                <div class="col-md-12">
+                    <p><strong>{{ $post->title }}</strong> 
+                        <a href="{{ route('admin.edit', ['id' => $post->id]) }}">Edit</a>
+                        <a href="{{ route('admin.delete', ['id' => $post->id]) }}">Delete</a>
+                    </p>
+                </div>
+            </div>
+        @endforeach
     </div>
-    @endforeach
+
+    <div class="col-md-4">
+        @foreach($tags as $tag)
+            <div class="row">
+                <div class="col-md-12">
+                    <p><strong>{{ $tag->tag }}</strong> 
+                    <a href="{{ route('admin.tag.edit', ['id' => $tag->id]) }}">Edit</a>
+                    <a href="{{ route('admin.tag.delete', ['id' => $tag->id]) }}">Delete</a>
+                    </p>
+                </div>
+            </div>
+        @endforeach
+    </div>
 @endsection
